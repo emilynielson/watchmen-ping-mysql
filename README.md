@@ -1,4 +1,4 @@
-# watchmen-ping-pg: a PostgreSQL ping service for watchmen
+# watchmen-ping-mysql: a MySQL ping service for watchmen
 
 This is a ping service for [watchmen](https://github.com/iloire/WatchMen).
 
@@ -8,7 +8,7 @@ This is a ping service for [watchmen](https://github.com/iloire/WatchMen).
 $ npm i watchmen-ping-mysql --save
 ```
 ## How to use
-Configure connection string to postgres database in URL field and select PG ping service.
+Configure connection string to MySQL database in URL field and select mysql ping service.
 
 ## History
 
