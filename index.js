@@ -1,4 +1,4 @@
-const Client = require('mysql').createConnection;
+const mysql= require('mysql')
 
 function PingService() {}
 
@@ -6,8 +6,18 @@ exports = module.exports = PingService;
 
 PingService.prototype.ping = function(service, callback) {
     var startTime = +new Date();
-    const client = new Client({
-        connectionString: service.url
+    var host = service.pingServiceOptions['mysql'].host.value;
+    var user = service.pingServiceOptions['mysql'].user.value;
+    var password = service.pingServiceOptions['mysql'].password.value;
+    var database = service.pingServiceOptions['mysql'].database.value;
+    var port = service.pingServiceOptions['mysql'].port.value;
+
+    const client = mysql.createConnection({
+        host: host,
+        user: user,
+        password: password,
+        database: database,
+        port: port
     });
     client.connect(err => {
         if (err) {
@@ -26,5 +36,30 @@ PingService.prototype.ping = function(service, callback) {
 };
 
 PingService.prototype.getDefaultOptions = function() {
-    return {}; // there is not need for UI confi options for this ping service
+    return {
+        host: {
+          descr: 'Host',
+          required: true
+        },
+    
+        user: {
+          descr: 'User',
+          required: false
+        },
+
+        password: {
+          descr: 'Password',
+          required: false
+        },
+
+        database: {
+          descr: 'Database',
+          required: false
+        },
+        port: {
+          descr: 'Port',
+          required: false
+        }
+    };
 };
+
