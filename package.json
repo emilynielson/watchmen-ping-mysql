@@ -1,6 +1,6 @@
 {
   "name": "watchmen-ping-mysql",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A MySQL ping service for watchmen.",
   "main": "index.js",
   "scripts": {
